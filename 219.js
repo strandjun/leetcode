@@ -5,12 +5,10 @@
  * @return {boolean}
  */
 
-var nums = [-1,-1],
-    k = 1;
 var containsNearbyDuplicate = function(nums, k) {
     var obj = {};
     for(var i=0,len=nums.length;i<len;i++){
-        if((typeof obj[nums[i]] != "undefined") && (Math.abs(i-obj[nums[i]]) <= k)){
+        if((obj[nums[i]] != "undefined") && (Math.abs(i-obj[nums[i]]) <= k)){
             return true;
         }
         obj[nums[i]] = i;
@@ -18,4 +16,6 @@ var containsNearbyDuplicate = function(nums, k) {
     return false;
 };
 
+var nums = [-1,-1],
+    k = 1;
 console.log(containsNearbyDuplicate(nums,k));
