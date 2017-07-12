@@ -1,64 +1,39 @@
-/**
- * @param  {string}  inputStr
- * @return {string}  [验证结果是否正确]
- * 
- * 26进制+1
- * 
- */
+String.prototype.isEmpty = function() {
+    return (this.length === 0 || !this.trim());
+};
 
-
-/**
- * 递归处理最后一位数字或字母+1
- * @param  {[string]} str          [原字符串]
- * @param  {[string]} type         [最后一位类型]
- * @type   {0:大写; 1:小写; 2:数字;} [默认为0]
- * @return {[string]}              [组合好的字符串]
- */
-function lastBitAdd(str) {
-
-    let len = str.length,
-        type = '';
-
-    // 判断末位类型type，并转化为数字
-    let lastStr = str[len - 1],
-        lastNum;
-    if (isNaN(lastStr)) {
-        lastNum = lastStr.charCodeAt();
-        type = lastNum > 90 ? '1' : '0';
-    } else {
-        lastNum = lastStr;
-        type = '2';
-    }
-
-    // +1
-    if (lastNum == 90 || lastNum == 122 || lastNum == 9) {
-        // if Z|z|9，则 A|a|0, 继续
-        if(len == 1){
-            lastNum = type == '0' ? 'AA' : (type == '1' ? 'aa' : '10');
-            return lastNum;
-        }else{
-            lastNum = type == '0' ? 'A' : (type == '1' ? 'a' : '0');
-            return lastBitAdd(str.substr(0, len - 1)) + lastNum;
-        }
-    } else {
-        // +1, return result
-        lastNum++;
-        if (type != '2') {
-            lastNum = String.fromCharCode(lastNum);
-        }
-        return str.substr(0, len - 1) + lastNum;
-    }
-}
-
-// 26进制+1调用
 function succ(inputStr) {
-    if (inputStr.trim() == '') {
-        return inputStr;
+    if(inputStr.isEmpty()) {
+        return inputStr
     }
-    return lastBitAdd(inputStr);
+    return incr(inputStr, inputStr.length -1, true)
 }
 
-// 结果呈现
+function incr(str, i) {
+    if(i < 0) {
+        return str[0] + str
+    }
+    var retObj = incrChar(str[i])
+    str = str.substr(0, i) + retObj.newChar+ str.substr(i + retObj.newChar.length)
+    if(!retObj.isIncr) {
+        return str
+    }
+    return incr(str, i-1)
+}
+
+function incrChar(char) {
+    switch(char) {
+        case 'Z': 
+            return {newChar:'A',isIncr:true}
+        case 'z': 
+            return {newChar:'a',isIncr:true}
+        case '9': 
+            return {newChar:'0',isIncr:true}
+        default:
+            return {newChar:String.fromCharCode(char.charCodeAt() + 1),isIncr:false}
+    }
+}
+
 function assertEq(a, b, s) {
     if (a == b) {
         console.log(s + a + "==" + b)
@@ -77,3 +52,4 @@ assertEq(succ("Az"),  "Ba",  '7:Az   ');
 assertEq(succ("A9"),  "B0",  '8:A9   ');
 assertEq(succ("A99"), "B00", '9:A99  ');
 assertEq(succ("A59"), "A60", '10:A59 ');
+assertEq(succ("zz"),  "aaa", '11:zz    ');
