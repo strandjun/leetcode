@@ -11,10 +11,14 @@ function succ(inputStr) {
 
 function incr(str, i) {
     if(i < 0) {
+        if (str[0] == '0') {
+            return '1' + str
+        }
         return str[0] + str
     }
     var retObj = incrChar(str[i])
     str = str.substr(0, i) + retObj.newChar+ str.substr(i + retObj.newChar.length)
+    console.info(str, retObj)
     if(!retObj.isIncr) {
         return str
     }
@@ -53,3 +57,4 @@ assertEq(succ("A9"),  "B0",  '8:A9   ');
 assertEq(succ("A99"), "B00", '9:A99  ');
 assertEq(succ("A59"), "A60", '10:A59 ');
 assertEq(succ("zz"),  "aaa", '11:zz    ');
+assertEq(succ("9z"),  "10a", '12:9z    ');
