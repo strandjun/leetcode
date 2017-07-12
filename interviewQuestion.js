@@ -18,7 +18,6 @@ function incr(str, i) {
     }
     var retObj = incrChar(str[i])
     str = str.substr(0, i) + retObj.newChar+ str.substr(i + retObj.newChar.length)
-    console.info(str, retObj)
     if(!retObj.isIncr) {
         return str
     }
