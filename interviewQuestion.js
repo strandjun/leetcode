@@ -9,44 +9,32 @@
 
 /**
  * 递归处理最后一位数字或字母+1
- * @param  {[string]} str          [原字符串]
- * @param  {[string]} type         [最后一位类型]
- * @type   {0:大写; 1:小写; 2:数字;} [默认为0]
- * @return {[string]}              [组合好的字符串]
+ * @param  {[string]} str    [原字符串]
+ * @param  {[string]} last   [进位字符]
+ * @return {[string]}        [组合好的字符串]
  */
-function lastBitAdd(str) {
+function lastBitAdd(str,last) {
 
-    let len = str.length,
-        type = '';
-
-    // 判断末位类型type，并转化为数字
-    let lastStr = str[len - 1],
-        lastNum;
-    if (isNaN(lastStr)) {
-        lastNum = lastStr.charCodeAt();
-        type = lastNum > 90 ? '1' : '0';
-    } else {
-        lastNum = lastStr;
-        type = '2';
+    let len = str.length;
+    if(len == 0){
+        return last;
     }
 
+    let lastStr = str[len - 1];
+
     // +1
-    if (lastNum == 90 || lastNum == 122 || lastNum == 9) {
-        // if Z|z|9，则 A|a|0, 继续
-        if(len == 1){
-            lastNum = type == '0' ? 'AA' : (type == '1' ? 'aa' : '10');
-            return lastNum;
-        }else{
-            lastNum = type == '0' ? 'A' : (type == '1' ? 'a' : '0');
-            return lastBitAdd(str.substr(0, len - 1)) + lastNum;
-        }
-    } else {
-        // +1, return result
-        lastNum++;
-        if (type != '2') {
-            lastNum = String.fromCharCode(lastNum);
-        }
-        return str.substr(0, len - 1) + lastNum;
+    switch (lastStr) {
+        case 'Z':
+            return lastBitAdd(str.substr(0, len - 1),'A') + 'A';
+            break;
+        case 'z':
+            return lastBitAdd(str.substr(0, len - 1),'a') + 'a';
+            break;
+        case '9':
+            return lastBitAdd(str.substr(0, len - 1),'1') + '0';
+            break;
+        default:
+            return str.substr(0, len - 1) + String.fromCharCode(lastStr.charCodeAt()+1);
     }
 }
 
@@ -77,3 +65,5 @@ assertEq(succ("Az"),  "Ba",  '7:Az   ');
 assertEq(succ("A9"),  "B0",  '8:A9   ');
 assertEq(succ("A99"), "B00", '9:A99  ');
 assertEq(succ("A59"), "A60", '10:A59 ');
+assertEq(succ("9z"),  "10a", '12:9z  ');
+
