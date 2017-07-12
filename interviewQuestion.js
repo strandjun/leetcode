@@ -9,10 +9,10 @@
 // 26进制+1
 function succ(inputStr) {
 
-    let len = inputStr.length;
-    if(len <= 0){
-        return;
+    if(inputStr.trim() == ''){
+        return inputStr;
     }
+
     let lastNum,newStr='';
 
     // 递归处理最后一位数字+1
@@ -23,9 +23,19 @@ function succ(inputStr) {
             return;
         }
         let str = inputStr[inputStrlen-1];
-        lastNum = str.charCodeAt();
+        if(isNaN(str)){
+            lastNum = str.charCodeAt();
+        }else{
+            lastNum = str;
+        }
         if(lastNum == 90){
             newStr = 'A' + newStr;
+            numAdd(inputStr.substr(0,inputStrlen-1));
+        }else if(lastNum == 122){
+            newStr = 'a' + newStr;
+            numAdd(inputStr.substr(0,inputStrlen-1));
+        }else if(lastNum == 9){
+            newStr = '0' + newStr;
             numAdd(inputStr.substr(0,inputStrlen-1));
         }else{
             newStr = String.fromCharCode(++lastNum) + newStr;
@@ -52,3 +62,7 @@ assertEq(succ("AA"), "AB");
 assertEq(succ("AZ"), "BA");
 assertEq(succ("AZZ"), "BAA");
 assertEq(succ("Z"), "AA");
+assertEq(succ(" "), " ");
+assertEq(succ("Aa"), "Ab");
+assertEq(succ("Az"), "Ba");
+assertEq(succ("A9"), "B0");
