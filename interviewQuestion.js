@@ -12,20 +12,14 @@
  * @param  {[string]} str          [原字符串]
  * @param  {[string]} type         [最后一位类型]
  * @type   {0:大写; 1:小写; 2:数字;} [默认为0]
- * @return {[string]}              [组合好的数组]
+ * @return {[string]}              [组合好的字符串]
  */
-function lastBitAdd(str, type) {
+function lastBitAdd(str) {
 
     let len = str.length,
-        newStr = '';
-    type = type ? type : '0';
+        type = '';
 
-    // 如果前面没有，则根据type进位
-    if (len == 0) {
-        return type == '0' ? 'A' : (type == '1' ? 'a' : '0');
-    }
-
-    // 判断是否进位,并重新确定type
+    // 判断末位类型type，并转化为数字
     let lastStr = str[len - 1],
         lastNum;
     if (isNaN(lastStr)) {
@@ -36,17 +30,23 @@ function lastBitAdd(str, type) {
         type = '2';
     }
 
+    // +1
     if (lastNum == 90 || lastNum == 122 || lastNum == 9) {
-        let temp = type == '0' ? 'A' : (type == '1' ? 'a' : '0');
-        return lastBitAdd(str.substr(0, len - 1), type) + temp;
-    } else {
-        if (type == '2') {
-            lastNum++;
-            newStr = lastNum.toString();
-        } else {
-            newStr = String.fromCharCode(++lastNum);
+        // if Z|z|9，则 A|a|0, 继续
+        if(len == 1){
+            lastNum = type == '0' ? 'AA' : (type == '1' ? 'aa' : '10');
+            return lastNum;
+        }else{
+            lastNum = type == '0' ? 'A' : (type == '1' ? 'a' : '0');
+            return lastBitAdd(str.substr(0, len - 1)) + lastNum;
         }
-        return str.substr(0, len - 1) + newStr;
+    } else {
+        // +1, return result
+        lastNum++;
+        if (type != '2') {
+            lastNum = String.fromCharCode(lastNum);
+        }
+        return str.substr(0, len - 1) + lastNum;
     }
 }
 
