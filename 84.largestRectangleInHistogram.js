@@ -119,6 +119,7 @@ var largestRectangleArea_NO4 = heights => {
     return maxArea;
 };
 
+// 记得临界值
 // var heights = [];
 // var heights = [2, 1, 5, 6, 2, 3];
 var heights = [1, 3, 2, 1, 1, 1, 3];
