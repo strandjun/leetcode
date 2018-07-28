@@ -29,49 +29,50 @@ Constraints:
 */
 
 // tu initial version
-// function reverseWords(arr) {
-//     let arrBegin=0, newArr=[], k=0;
-//     for (let i = 0; i < arr.length; i++) {
-//         if (arr[i] === " ") {
-//             newArr[k] = arr.slice(arrBegin,i);
-//             arrBegin = i+1;
-//             k++;
-//         }
-//     }
-//     newArr.push(arr.slice(arrBegin,arr.length))
-//     // 不知道reverse、concat里做了什么，不知道空间、时间复杂度，所以最好不用…
-//     newArr.reverse();
-//     console.log(newArr.join(' | '));
-//     newArr = Array.prototype.concat.apply([], newArr);
-//     // newArr = [].concat(newArr);
-//     return newArr;
-// }
+function reverseWords(arr) {
+    let arrBegin=0, newArr=[], k=0;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === " ") {
+            newArr[k] = arr.slice(arrBegin,i);
+            arrBegin = i+1;
+            k++;
+        }
+    }
+    newArr.push(arr.slice(arrBegin,arr.length))
+    // 不知道reverse、concat里做了什么，不知道空间、时间复杂度，所以最好不用…
+    newArr.reverse();
+    console.log(newArr.join(' | '));
+    // newArr = Array.prototype.concat.apply([], newArr);
+    newArr = [].concat(...newArr); //将数组转为函数的参数
+    // newArr = [].concat(newArr);
+    return newArr;
+}
 
 // update version
-// function reverseWords(arr) {
-//     let wordNum = [],
-//         arrNew = [],
-//         arrLen = arr.length;
-//     // wordNum.push(-1);
-//     for (let i = 0; i < arrLen; i++) {
-//         if (arr[i] === " ") {
-//             wordNum.push(i);
-//         }
-//     }
-//     wordNum.push(arr.length);
-//     // console.log(wordNum, arr.length);
-//     for (let j = wordNum.length - 1; j >= 0; j--) {
-//         if (j > 0) {
-//             arrNew = arrNew.concat(arr.slice(wordNum[j - 1] + 1, wordNum[j]), [" "]);
-//         } else if (j === 0) {
-//             arrNew = arrNew.concat(arr.slice(0, wordNum[j]));
-//         }
-//     }
-//     return arrNew;
-// }
+function upReverseWords(arr) {
+    let wordNum = [],
+        arrNew = [],
+        arrLen = arr.length;
+    // wordNum.push(-1);
+    for (let i = 0; i < arrLen; i++) {
+        if (arr[i] === " ") {
+            wordNum.push(i);
+        }
+    }
+    wordNum.push(arr.length);
+    // console.log(wordNum, arr.length);
+    for (let j = wordNum.length - 1; j >= 0; j--) {
+        if (j > 0) {
+            arrNew = arrNew.concat(arr.slice(wordNum[j - 1] + 1, wordNum[j]), [" "]);
+        } else if (j === 0) {
+            arrNew = arrNew.concat(arr.slice(0, wordNum[j]));
+        }
+    }
+    return arrNew;
+}
 
 // yuri version
-function reverseWords(arr) {
+function yrReverseWords(arr) {
     var indexArr = [];
 
     var start = 0,
@@ -105,6 +106,8 @@ let arr = [
     "m", "a", "k", "e", "s", " ",
     "p", "r", "a", "c", "t", "i", "c", "e"
 ];
+// console.log(yrReverseWords(arr));
+// console.log(upReverseWords(arr));
 console.log(reverseWords(arr));
 
 
