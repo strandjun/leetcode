@@ -1,5 +1,5 @@
 /**
-Sentence Reverse
+Question: Sentence Reverse
 You are given an array of characters arr that consists of sequences of characters separated by space characters. Each space-delimited sequence of characters defines a word.
 
 Implement a function reverseWords that reverses the order of the words in the array in the most efficient manner.
@@ -143,15 +143,17 @@ function mirrorReverse(arr, s, e) {
         s++;
         e--;
     }
+    // console.log(`mirror: ${arr.join('')}`);
 }
+
 
 let arr = [ "p", "e", "r", "f", "e", "c", "t", " ", "m", "a", "k", "e", "s", " ", "p", "r", "a", "c", "t", "i", "c", "e"];
 // let arr = [" "," "];
 
-// console.log(reverseWords_NO1(arr));
-// console.log(ReverseWords_NO2(arr));
-// console.log(ReverseWords_NO3(arr));
-console.log(reverseWords_NO4(arr));
+// console.log(reverseWords_NO1(arr).join(''));
+// console.log(ReverseWords_NO2(arr).join(''));
+// console.log(ReverseWords_NO3(arr).join(''));
+console.log(reverseWords_NO4(arr).join(''));
 
 /**
  * 时间、空间复杂度 @yr：
