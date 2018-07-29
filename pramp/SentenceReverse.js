@@ -29,19 +29,21 @@ Constraints:
 */
 
 // tu initial version
-function reverseWords(arr) {
-    let arrBegin=0, newArr=[], k=0;
+function reverseWords_NO1(arr) {
+    let arrBegin = 0,
+        newArr = [],
+        k = 0;
     for (let i = 0; i < arr.length; i++) {
         if (arr[i] === " ") {
-            newArr[k] = arr.slice(arrBegin,i);
-            arrBegin = i+1;
+            newArr[k] = arr.slice(arrBegin, i);
+            arrBegin = i + 1;
             k++;
         }
     }
-    newArr.push(arr.slice(arrBegin,arr.length))
+    newArr.push(arr.slice(arrBegin, arr.length));
     // 不知道reverse、concat里做了什么，不知道空间、时间复杂度，所以最好不用…
     newArr.reverse();
-    console.log(newArr.join(' | '));
+    console.log(newArr.join(" | "));
     // newArr = Array.prototype.concat.apply([], newArr);
     newArr = [].concat(...newArr); //将数组转为函数的参数
     // newArr = [].concat(newArr);
@@ -49,7 +51,7 @@ function reverseWords(arr) {
 }
 
 // update version
-function upReverseWords(arr) {
+function reverseWords_NO2(arr) {
     let wordNum = [],
         arrNew = [],
         arrLen = arr.length;
@@ -63,7 +65,9 @@ function upReverseWords(arr) {
     // console.log(wordNum, arr.length);
     for (let j = wordNum.length - 1; j >= 0; j--) {
         if (j > 0) {
-            arrNew = arrNew.concat(arr.slice(wordNum[j - 1] + 1, wordNum[j]), [" "]);
+            arrNew = arrNew.concat(arr.slice(wordNum[j - 1] + 1, wordNum[j]), [
+                " "
+            ]);
         } else if (j === 0) {
             arrNew = arrNew.concat(arr.slice(0, wordNum[j]));
         }
@@ -72,7 +76,7 @@ function upReverseWords(arr) {
 }
 
 // yuri version
-function yrReverseWords(arr) {
+function reverseWords_NO3(arr) {
     var indexArr = [];
 
     var start = 0,
@@ -101,15 +105,53 @@ function yrReverseWords(arr) {
     return result;
 }
 
-let arr = [
-    "p", "e", "r", "f", "e", "c", "t", " ",
-    "m", "a", "k", "e", "s", " ",
-    "p", "r", "a", "c", "t", "i", "c", "e"
-];
-// console.log(yrReverseWords(arr));
-// console.log(upReverseWords(arr));
-console.log(reverseWords(arr));
+/**
+ * elegant and efficient solution
+ * Time Complexity: traversing the array twice with a constant number of actions for each item is linear O(N).
+ * Space Complexity: using iteration indices and one temp variable takes constant O(1) memory.
+ */
+function reverseWords_NO4(arr) {
+    let arrLen = arr.length;
+    mirrorReverse(arr, 0, arrLen - 1);
 
+    let wordS = null;
+    for (let i = 0; i <= arrLen - 1; i++) {
+        if (arr[i] == " ") {
+            if (wordS != null) {
+                mirrorReverse(arr, wordS, i - 1);
+                wordS = null;
+            }
+        } else if (i == arrLen - 1) {
+            if (wordS != null) {
+                mirrorReverse(arr, wordS, i);
+            }
+        } else {
+            if (wordS == null) {
+                wordS = i;
+            }
+        }
+    }
+    return arr;
+}
+
+function mirrorReverse(arr, s, e) {
+    let temp;
+    while (s < e) {
+        temp = arr[s];
+        arr[s] = arr[e];
+        arr[e] = temp;
+        s++;
+        e--;
+    }
+}
+
+let arr = [ "p", "e", "r", "f", "e", "c", "t", " ", "m", "a", "k", "e", "s", " ", "p", "r", "a", "c", "t", "i", "c", "e"];
+// let arr = [" "," "];
+
+// console.log(reverseWords_NO1(arr));
+// console.log(ReverseWords_NO2(arr));
+// console.log(ReverseWords_NO3(arr));
+console.log(reverseWords_NO4(arr));
 
 /**
  * 时间、空间复杂度 @yr：
