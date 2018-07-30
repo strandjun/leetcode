@@ -88,20 +88,20 @@ function decrypt_NO2(word) {
         decryption = "",
         newLetterAscii = null;
     for (let i = 0; i < word.length; i++) {
-        console.log(`***** output i: ${i} *****`);
-        console.log(`newLetterAscii1: ${newLetterAscii}, word[i]: ${word[i].charCodeAt()}`);
+        // console.log(`***** output i: ${i} *****`);
+        // console.log(`newLetterAscii1: ${newLetterAscii}, word[i]: ${word[i].charCodeAt()}`);
         newLetterAscii = word[i].charCodeAt();
         newLetterAscii = newLetterAscii - secondStep;
-        console.log(`newLetterAscii2: ${newLetterAscii}`);
+        // console.log(`newLetterAscii2: ${newLetterAscii}`);
 
         while (newLetterAscii < "a".charCodeAt()) {
             newLetterAscii += 26;
         }
-        console.log(`newLetterAscii3: ${newLetterAscii}`);
+        // console.log(`newLetterAscii3: ${newLetterAscii}`);
         decryption = decryption + String.fromCharCode(newLetterAscii);
-        console.log(`secondStep1: ${secondStep}, decryption: ${decryption}`);
+        // console.log(`secondStep1: ${secondStep}, decryption: ${decryption}`);
         secondStep += newLetterAscii;
-        console.log(`secondStep2: ${secondStep}`);
+        // console.log(`secondStep2: ${secondStep}`);
     }
     return decryption;
 }
