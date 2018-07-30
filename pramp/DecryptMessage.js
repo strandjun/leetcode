@@ -82,6 +82,29 @@ function decrypt_NO1(word) {
     return newW.join("");
 }
 
+// standard version
+function decrypt_NO2(word) {
+    let secondStep = 1,
+        decryption = "",
+        newLetterAscii = null;
+    for (let i = 0; i < word.length; i++) {
+        console.log(`***** output i: ${i} *****`);
+        console.log(`newLetterAscii1: ${newLetterAscii}, word[i]: ${word[i].charCodeAt()}`);
+        newLetterAscii = word[i].charCodeAt();
+        newLetterAscii = newLetterAscii - secondStep;
+        console.log(`newLetterAscii2: ${newLetterAscii}`);
+
+        while (newLetterAscii < "a".charCodeAt()) {
+            newLetterAscii += 26;
+        }
+        console.log(`newLetterAscii3: ${newLetterAscii}`);
+        decryption = decryption + String.fromCharCode(newLetterAscii);
+        console.log(`secondStep1: ${secondStep}, decryption: ${decryption}`);
+        secondStep += newLetterAscii;
+        console.log(`secondStep2: ${secondStep}`);
+    }
+    return decryption;
+}
 
 /**
  * 加密 encrypt process
