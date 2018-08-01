@@ -8,7 +8,7 @@
  * @return {number[][]}
  */
 var transpose = function(A) {
-    let newArr = [][],
+    let newArr = [],
         tmpArr = [];
     for(let i=0; i<A[0].length; i++){
         for(let j=0; j<A.length; j++){
