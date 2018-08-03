@@ -15,31 +15,24 @@
  * @return {boolean}
  */
 
-var tmpStr = "";
-var findLeaf = function(node) {
+var findLeaf = function(node, str) {
     if (node.left == null && node.right == null) {
-        tmpStr += " " + node.val;
+        return (str += " " + node.val);
     }
     if (node.left != null) {
-        findLeaf(node.left);
+        str = findLeaf(node.left, str);
     }
     if (node.right != null) {
-        findLeaf(node.right);
+        str = findLeaf(node.right, str);
     }
-    return tmpStr;
+    return str;
 };
 
 var leafSimilar = function(root1, root2) {
-    var tmp1, tmp2;
-    tmp1 = findLeaf(root1);
-    tmpStr = "";
-    tmp2 = findLeaf(root2);
+    var tmp1 = findLeaf(root1, "");
+    var tmp2 = findLeaf(root2, "");
 
-    if (tmp1 === tmp2) {
-        return true;
-    } else {
-        return false;
-    }
+    return tmp1 === tmp2;
 };
 
 // var root1 = [1],
@@ -49,7 +42,6 @@ var leafSimilar = function(root1, root2) {
 // var root1 = [3, 5, 1, 6, 2, 9, 8, null, null, 7, 4],
 //     root2 = [3, 5, 1, 6, 7, 4, 2, null, null, null, null, null, null, 9, 8];
 // output: true;
-
 
 // 模拟出的TreeNode Object, 可总说我这个用例过不去… 炸裂 单独测明明ok的
 // var root1 = { val: 1, left: null, right: null },
