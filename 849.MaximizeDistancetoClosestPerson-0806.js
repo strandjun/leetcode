@@ -1,6 +1,6 @@
 /**
  * https://leetcode.com/problems/maximize-distance-to-closest-person/description/
- * #20180807
+ * #20180806
  * @param {number[]} seats
  * @return {number}
  */
