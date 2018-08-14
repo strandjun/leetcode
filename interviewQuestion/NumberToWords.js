@@ -1,117 +1,49 @@
 /**
  * Number to words
  * Easy:
- * input number[1…1000] return english words length,space is not counted.
+ * input number[1…1000] return english words length, space is not counted.
  */
 
-/**
- * step:
- * 1 map singleNum、specialNum
- * 2 judge num then switch
- */
-var numberToWords = function(num) {
-    num = num.toString();
-    const singleNum = new Map([
-        ["1", "one"],
-        ["2", "two"],
-        ["3", "three"],
-        ["4", "four"],
-        ["5", "five"],
-        ["6", "six"],
-        ["7", "seven"],
-        ["8", "eight"],
-        ["9", "nine"]
-    ]);
-    const twoSpecialNum = new Map([
-        ["10", "ten"],
-        ["11", "eleven"],
-        ["12", "twelve"],
-        ["13", "thirteen"],
-        ["14", "fourteen"],
-        ["15", "fifteen"],
-        ["16", "sixteen"],
-        ["17", "seventeen"],
-        ["18", "eighteen"],
-        ["19", "nineteen"]
-    ]);
-    const twoNum = new Map([
-        ["2", "twenty"],
-        ["3", "thirty"],
-        ["4", "forty"],
-        ["5", "fifty"],
-        ["6", "sixty"],
-        ["7", "seventy"],
-        ["8", "eighty"],
-        ["9", "ninety"]
-    ]);
+// step1. enumerate special nums
+const BASIC = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"];
+const TENS = ["", "Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"];
+const HUNDRED = ["Hundred"];
 
-    const numLen = num.length;
-
-    let singleNumFun = num => {
-        return singleNum.get(num);
-    };
-    let twoNumFun = num => {
-        if (num == "00") {
-            return "";
+// step2. less Than Thousand func
+var lessThanThousand = num => {
+    if (num == 1000) {
+        return "onethousand";
+    } else if (num > 1000 || num < 1) {
+        return "";
+    } else if (num < 20) {
+        return BASIC[num];
+    } else if (num < 100) {
+        let tens = Math.trunc(num / 10);
+        return TENS[tens] + BASIC[num % 10];
+    } else {
+        let hundreds = Math.trunc(num / 100),
+            words = "";
+        if (num % 100 != 0) {
+            words = BASIC[hundreds] + HUNDRED[0] + "and" + lessThanThousand(num % 100);
+        } else {
+            words = BASIC[hundreds] + HUNDRED[0];
         }
-        if (twoSpecialNum.has(num)) {
-            return twoSpecialNum.get(num);
-        }
-        const first = num.charAt(0);
-        let tmpStr = twoNum.get(first);
-        if (num.charAt(1) != "0") {
-            tmpStr += singleNum.get(num.charAt(1));
-        }
-        return tmpStr;
-    };
-    let threeNumFun = num => {
-        if (num == "000") {
-            return "";
-        }
-        const first = singleNumFun(num.charAt(0));
-        let tmpStr = `${first}hundred`;
-        let ss = twoNumFun(num.substr(1));
-        if (ss) {
-            tmpStr = `${tmpStr}and${ss}`;
-        }
-        return tmpStr;
-    };
-    let fourNumFun = num => {
-        const first = singleNumFun(num.charAt(0));
-        let tmpStr = `${first}thousand`;
-        let ss = threeNumFun(num.substr(1));
-        if (ss) {
-            tmpStr = `${tmpStr}${ss}`;
-        }
-        return tmpStr;
-    };
-
-    switch (numLen) {
-        case 1:
-            return singleNumFun(num);
-        // return singleNumFun(num).length;
-        case 2:
-            return twoNumFun(num);
-        // return twoNumFun(num).length;
-        case 3:
-            return threeNumFun(num);
-        // return threeNumFun(num).length;
-        case 4:
-            return fourNumFun(num);
-        // return fourNumFun(num).length;
+        return words;
     }
 };
+var numToWords = (num) => {
+    let words = lessThanThousand(num);
+    return words.length;
+}
 
-var num = 1990; // output one:3
-// var num = 290; // output two:3
-// var num = 300; // output three:5
-// var num = 123; // output one hundred and twenty three:24
-console.log(numberToWords(num));
+var num = 2; // output two:3
+var num = 300; // output three hundred: 12
+var num = 123; // output one hundred and twenty three: 24
+var num = 1001; // output '': 0
+// console.log(lessThanThousand(num));
+console.log(numToWords(num));
 
 /**
- * Similar Questions:
- *
- * 273.IntegertoEnglishWords.js
+ * Similar Questions: 273.IntegertoEnglishWords.js
  * https://leetcode.com/problems/integer-to-english-words/description/
- *
  */
