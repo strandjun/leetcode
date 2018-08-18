@@ -58,33 +58,7 @@ var maximalRectangle = function(matrix) {
     return recursiveArea(matrix, 0, 0);
 };
 
-var Input = [
-    ["1", "0", "1", "0", "0"],
-    ["1", "0", "1", "1", "1"],
-    ["1", "1", "1", "1", "1"],
-    ["1", "0", "0", "1", "0"]
-]; // Output: 6
+var testCase = require("./85.MaximalRectangle-0818-testcase.js");
 
-var Input = [
-    ["1", "1", "1", "1", "1", "1", "1", "1"],
-    ["1", "1", "1", "1", "1", "1", "1", "0"],
-    ["1", "1", "1", "1", "1", "1", "1", "0"],
-    ["1", "1", "1", "1", "1", "0", "0", "0"],
-    ["0", "1", "1", "1", "1", "0", "0", "0"]
-]; // Output: 21
-
-var Input = [["1", "0"]]; // Output: 1
-var Input = [["0", "1"]]; // Output: 1
-var Input = [["0", "1"], ["1", "0"]]; // Output: 1
-var Input = [["1", "0"], ["1", "0"]]; // Output: 2
-var Input = [
-    ["1", "0", "1", "1", "0", "1"],
-    ["1", "1", "1", "1", "1", "1"],
-    ["0", "1", "1", "0", "1", "1"],
-    ["1", "1", "1", "0", "1", "0"],
-    ["0", "1", "1", "1", "1", "1"],
-    ["1", "1", "0", "1", "1", "1"]
-]; // Output: 8
-
-var Input = [["0"]]; // Output: 0
-console.log(maximalRectangle(Input));
+console.log(maximalRectangle(testCase.Input));
+console.log(maximalRectangle(testCase.Output));
