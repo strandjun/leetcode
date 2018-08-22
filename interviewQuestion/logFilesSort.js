@@ -1,17 +1,17 @@
 /**
- * 第二道题就是sort一个logfile，logfile是用id+空格+数据的形式组成的.
-数据可能全是数字or全是字母
-把全是字母的数据，按照lexicographical的顺序排序。把全是数字的，按照出现在源文件里面的先后顺序排序
-然后把全是字母的行，放到全是数字的行之前。
- * 
+ * 第二道高频题 Log file
+ * sort一个logfile，logfile是用id+空格+数据的形式组成的. 数据可能全是数字or全是字母
+ * 把全是字母的数据，按照lexicographical的顺序排序。把全是数字的，按照出现在源文件里面的先后顺序排序
+ * 然后把全是字母的行，放到全是数字的行之前。
+ *
  * @param {number} size
  * @param {array} logs
  * @return {string}
  */
 
 /**
- * step1. scan logs => map||array
- * step2. compare every item
+ * step1. data structure => class Log
+ * step2. compare log.data or log.id
  */
 
 let Log = class Log {
@@ -20,7 +20,7 @@ let Log = class Log {
         this.data = data;
     }
 };
-
+// main function
 function reOrderLog(size, logs) {
     let newCharLogs = [],
         newNumLogs = [];
@@ -33,17 +33,18 @@ function reOrderLog(size, logs) {
             // if number
             newNumLogs.push(logs[i]);
         } else {
-            // if english letters
+            // if letter
             newCharLogs.push(new Log(id, data));
         }
     }
     newCharLogs.sort(compareStr);
-    newCharLogs.forEach(function(val,key) {
+    newCharLogs.forEach(function(val, key) {
         newCharLogs[key] = val.id + " " + val.data;
     });
     newCharLogs = newCharLogs.concat(newNumLogs);
     return newCharLogs;
 }
+// compare letters function
 function compareStr(a, b) {
     if (a.data === b.data) {
         return a.id > b.id;
@@ -61,7 +62,7 @@ var logFileSize = 5,
         "a8 act zoo"
     ];
 /*
-Output:
+Output: 
 [g1 act car]
 [a8 act zoo]
 [ab1 off key dog]

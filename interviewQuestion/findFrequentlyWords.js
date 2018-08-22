@@ -1,4 +1,6 @@
 /**
+ * 第一道高频题 find frequently words
+ * 
  * @param {string} literatureText
  * @param {array} wordsToExclude
  * @return {array}
