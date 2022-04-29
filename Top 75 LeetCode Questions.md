@@ -1,5 +1,4 @@
-# Curated List of Top 75 LeetCode Questions to Save Your Time
-— from teamblind New Year Gift  
+# Curated List of 75 LeetCode Questions 
 
 
 ## Array (10)
@@ -134,3 +133,6 @@
 - [ ] 2. [Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/)
 - [ ] 3. [Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/)
 
+<br>
+
+> from teamblind New Year Gift 
