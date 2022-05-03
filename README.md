@@ -142,7 +142,7 @@
 * [1720.decode-xored-array.js](./1000~2000/1720.decode-xored-array.js)
 * [1725.number-of-rectangles-that-can-form-the-largest-square.js](./1000~2000/1725.number-of-rectangles-that-can-form-the-largest-square.js)
 * [1732.find-the-highest-altitude.js](./1000~2000/1732.find-the-highest-altitude.js)
-* [1769.minimum-number-of-operations-to-move-all-balls-to-each-box.js](./1000~2000/1769.minimum-number-of-operations-to-move-all-balls-to-each-box.js)
+* [1769.minimum-number-of-operations-to-move-all-balls-to-each-box.ts](./1000~2000/1769.minimum-number-of-operations-to-move-all-balls-to-each-box.ts)
 * [1773.count-items-matching-a-rule.js](./1000~2000/1773.count-items-matching-a-rule.js)
 * [1791.find-center-of-star-graph.js](./1000~2000/1791.find-center-of-star-graph.js)
 * [1812.determine-color-of-a-chessboard-square.js](./1000~2000/1812.determine-color-of-a-chessboard-square.js)
