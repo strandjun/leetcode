@@ -10,7 +10,7 @@
 - [ ] [53. Maximum Subarray (Easy)](https://leetcode.com/problems/maximum-subarray/)
 - [ ] [152. Maximum Product Subarray](https://leetcode.com/problems/maximum-product-subarray/)
 - [ ] [153. Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
-- [ ] [33. Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/)
+- [x] [33. Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/)
 - [ ] [15. 3Sum](https://leetcode.com/problems/3sum/)
 - [ ] [11. Container With Most Water](https://leetcode.com/problems/container-with-most-water/)
 
@@ -39,7 +39,7 @@
 - [ ] [213. House Robber II](https://leetcode.com/problems/house-robber-ii/)
 - [ ] [91. Decode Ways](https://leetcode.com/problems/decode-ways/)
 - [ ] [62. Unique Paths](https://leetcode.com/problems/unique-paths/)
-- [ ] [55. Jump Game](https://leetcode.com/problems/jump-game/)
+- [x] [55. Jump Game](https://leetcode.com/problems/jump-game/)
 
 
 <br>
@@ -93,7 +93,7 @@
 
 ## String (10)
 
-- [ ] [3. Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
+- [x] [3. Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
 - [ ] [424. Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement/)
 - [ ] [76. Minimum Window Substring (Hard)](https://leetcode.com/problems/minimum-window-substring/)
 - [ ] [242. Valid Anagram (Easy)](https://leetcode.com/problems/valid-anagram/)
