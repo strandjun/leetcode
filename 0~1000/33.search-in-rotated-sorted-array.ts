@@ -53,6 +53,14 @@ function search1(nums: number[], target: number): number {
 
 
 // find the pivot then Binary Search, TC: O(2log N), SC: O(1)
+/*
+examples: 
+search([3, 1], 1) // 1
+search([1, 3], 3) // 1
+search([4, 5, 6, 7, 0, 1, 2], 0) // 4
+search([4, 5, 6, 7, 0, 1, 2], 3) // -1
+search([1], 0) // -1
+ */
 function search(nums: number[], target: number): number {
 
     function findPivotPoint(nums: number[]) {
