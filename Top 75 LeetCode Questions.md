@@ -95,7 +95,7 @@
 
 - [x] [3. Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
 - [ ] [424. Longest Repeating Character Replacement](https://leetcode.com/problems/longest-repeating-character-replacement/)
-- [ ] [76. Minimum Window Substring (Hard)](https://leetcode.com/problems/minimum-window-substring/)
+- [x] [76. Minimum Window Substring (Hard)](https://leetcode.com/problems/minimum-window-substring/)
 - [ ] [242. Valid Anagram (Easy)](https://leetcode.com/problems/valid-anagram/)
 - [ ] [49. Group Anagrams](https://leetcode.com/problems/group-anagrams/)
 - [ ] [20. Valid Parentheses (Easy)](https://leetcode.com/problems/valid-parentheses/)
