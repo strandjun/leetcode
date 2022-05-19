@@ -6,7 +6,7 @@
 - [x] [1. Two Sum (Easy)](https://leetcode.com/problems/two-sum/)
 - [ ] [121. Best Time to Buy and Sell Stock (Easy)](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
 - [ ] [217. Contains Duplicate (Easy)](https://leetcode.com/problems/contains-duplicate/)
-- [ ] [238. Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/)
+- [x] [238. Product of Array Except Self](https://leetcode.com/problems/product-of-array-except-self/)
 - [ ] [53. Maximum Subarray (Easy)](https://leetcode.com/problems/maximum-subarray/)
 - [ ] [152. Maximum Product Subarray](https://leetcode.com/problems/maximum-product-subarray/)
 - [ ] [153. Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
