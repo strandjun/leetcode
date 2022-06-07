@@ -61,7 +61,7 @@
 ## Interval (5)
 
 - [ ] [57. Insert Interval](https://leetcode.com/problems/insert-interval/)
-- [ ] [56. Merge Intervals](https://leetcode.com/problems/merge-intervals/)
+- [x] [56. Merge Intervals](https://leetcode.com/problems/merge-intervals/)
 - [ ] [435. Non-overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals/)
 - [ ] [Meeting Rooms (LeetCode Premium)](https://leetcode.com/problems/meeting-rooms/)
 - [ ] [Meeting Rooms II (LeetCode Premium)](https://leetcode.com/problems/meeting-rooms-ii/)
