@@ -37,7 +37,7 @@
 - [ ] [377. Combination Sum IV](https://leetcode.com/problems/combination-sum-iv/)
 - [x] [198. House Robber](https://leetcode.com/problems/house-robber/)
 - [ ] [213. House Robber II](https://leetcode.com/problems/house-robber-ii/)
-- [ ] [91. Decode Ways](https://leetcode.com/problems/decode-ways/)
+- [x] [91. Decode Ways](https://leetcode.com/problems/decode-ways/)
 - [ ] [62. Unique Paths](https://leetcode.com/problems/unique-paths/)
 - [x] [55. Jump Game](https://leetcode.com/problems/jump-game/)
 
